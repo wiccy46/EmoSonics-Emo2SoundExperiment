@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">EmoSoundRating</string>
+    <string name="action_settings">Einstellungen</string>
+
+    <!--
+    This part is for test page. .
+    -->
+    <string name="nextSound">Nächste</string>
+    <string name="playSound">Spiel</string>
+    <string name="emotion">Emotion:</string>
+    <string name="happy">Glücklich</string>
+    <string name="surprised">Überrascht</string>
+    <string name="sad">Traurig</string>
+    <string name="neutral">Neutral</string>
+    <string name="angry">Wütend</string>
+    <string name="tired">Müde</string>
+    <string name="calm">Ruhig</string>
+    <string name="disgusted">Angeekelt</string>
+    <string name="afraid">Angst</string>
+    <string name="degree">Grad:</string>
+    <string name="na">--</string>
+    <string name="weak">Schwach</string>
+    <string name="average">Durchschnittlich</string>
+    <string name="strong">Stark</string>
+    <string name="myname">Mein Name</string>
+    <string name="restart">Neustart</string>
+    <string name="return2home">zurückkehren</string>
+    <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>
+    <string name="finishTest">Gut gemacht!! Datei gespeichert</string>
+
+    <!--
+      This part is for the main page information enter.
+
+      -->
+
+
+    <string name="welcome">EmoSonic</string>
+    <string name="startTest">Start</string>
+    <string name="enterIPHint">Beispiel 192.168.0.1</string>
+    <string name="studyprefix">Studienpräfix: </string>
+    <string name="userid">Benutzerid: </string>
+    <string name="username">Benutzername: </string>
+    <string name="soundmodel">Klangmodell: </string>
+    <string name="run">Lauf (>0): </string>
+    <string name="nrstim">NrStim: </string>
+    <string name="abs">Abstrakt: </string>
+    <string name="vocal">Vokal: </string>
+    <string name="ip">IP*: </string>
+    <string name="prefixExample">rating-emo9</string>
+
+
+
+    <!--
+  For toast
+  -->
+
+    <string name="nullInput">Null-Eingabe, versuchen Sie es erneut.</string>
+    <string name="invalidIP">Ungültige IP, korrektes Format, e.g. 192.168.0.1, 255.255.255.255. Versuch es noch einmal</string>
+
+</resources>

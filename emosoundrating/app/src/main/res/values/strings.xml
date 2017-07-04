@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">EmoSound Rating</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!--
+    This part is for test page. .
+    -->
+    <string name="nextSound">Next</string>
+    <string name="playSound">Play</string>
+    <string name="emotion">Emotion:</string>
+    <string name="happy">Happy</string>
+    <string name="surprised">Surprised</string>
+    <string name="sad">Sad</string>
+    <string name="neutral">Neutral</string>
+    <string name="angry">Angry</string>
+    <string name="tired">Tired</string>
+    <string name="calm">Calm</string>
+    <string name="disgusted">Disgusted</string>
+    <string name="afraid">Afraid</string>
+    <string name="degree">Degree:</string>
+    <string name="na">--</string>
+    <string name="weak">Weak</string>
+    <string name="average">Average</string>
+    <string name="strong">Strong</string>
+    <string name="myname">myname</string>
+    <string name="restart">Restart</string>
+    <string name="return2home">Return to Home</string>
+    <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>
+    <string name="finishTest">Well done! Save the file.</string>
+
+    <!--
+      This part is for the main page information enter.
+
+      -->
+    <string name="welcome">EmoSonic</string>
+    <string name="startTest">Begin</string>
+    <string name="enterIPHint">Example 192.168.0.1</string>
+    <string name="studyprefix">Study Prefix: </string>
+    <string name="userid">UserID: </string>
+    <string name="username">Username: </string>
+    <string name="soundmodel">Sound model: </string>
+    <string name="run">Run (>0): </string>
+    <string name="nrstim">NrStim: </string>
+    <string name="abs">Abstract: </string>
+    <string name="vocal">Vocal: </string>
+    <string name="ip">IP*: </string>
+    <string name="prefixExample">rating-emo9</string>
+
+
+
+    <!--
+  For toast
+  -->
+
+    <string name="nullInput">Null Input, try again.</string>
+    <string name="invalidIP">Invalid IP, correct format,e.g. 192.168.0.1, 255.255.255.255. Try again</string>
+
+</resources>
