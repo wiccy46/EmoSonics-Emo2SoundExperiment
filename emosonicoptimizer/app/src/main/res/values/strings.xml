@@ -14,9 +14,9 @@
     <string name="two">2 </string>
     <string name="three">3 </string>
     <string name="four">4 </string>
-    <string name="logSigma">Log(sigma) </string>
-    <string name="onproceed">Proceed </string>
-    <string name="onaccept">Accept </string>
+    <string name="logSigma">Log(sigma):  </string>
+    <string name="onproceed">Next Variations </string>
+    <string name="onaccept">Next Emotion </string>
     <string name="gothroughemo">Click on accept till the last emotion to save the data </string>
 
 
@@ -25,7 +25,7 @@
 
     <string name="nextSound">Next</string>
     <string name="playSound">Play</string>
-    <string name="emotion">Emotion:</string>
+    <string name="emotion">Target Emotions:</string>
     <string name="happy">Happy</string>
     <string name="surprised">Surprised</string>
     <string name="sad">Sad</string>
@@ -63,6 +63,15 @@
     <string name="vocal">Vocal: </string>
     <string name="ip">IP*: </string>
     <string name="prefixExample">rating-emo9</string>
+
+    <!--
+      This part is for the new test layout
+      -->
+
+    <string name="findthesound">Find the _ Sound</string>
+
+
+
 
 
 
