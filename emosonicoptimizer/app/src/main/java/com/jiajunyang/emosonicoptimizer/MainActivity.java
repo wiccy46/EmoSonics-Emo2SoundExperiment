@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity{
         String action = "init";
         if (validIP){
             Toast.makeText(getApplicationContext(), "New IP: "+ ip, Toast.LENGTH_LONG).show();
-            Thread play = new Thread(new OSCSend(ip, action, 0, 0, 0, myPrefix, myUserid, myUsername, modelIdx, myRun, nrStim,-1.0));
+            Thread play = new Thread(new OSCSend(ip, action, 0, 0, 0, myPrefix, myUserid, myUsername, modelIdx, myRun, nrStim,-1));
 
             play.start();
             Toast.makeText(getApplicationContext(), "Newest IP: "+ ip, Toast.LENGTH_LONG).show();
@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity{
             }
         });*/
 
-   //     modelChoice = (RadioGroup) findViewById(R.id.modelVariation);
-     //   modelEmotion = (RadioGroup) findViewById(R.id.modelEmotion);
+        //     modelChoice = (RadioGroup) findViewById(R.id.modelVariation);
+        //   modelEmotion = (RadioGroup) findViewById(R.id.modelEmotion);
 
 
 

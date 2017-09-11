@@ -21,13 +21,13 @@ public class OSCSend implements Runnable {
     int emoIndex;
     int degreeIndex;
     int count;
-    double logChange;
+    int logChange;
     String model;
 
     // Updating parameters and setup OSC port out.
     // Takes 5 parameters.
     public OSCSend(String myIP, String action, int emoIndex, int degreeIndex, int count, String prefix, String userID, String userName
-            ,String model, String run, int nrStim ,double logChange){
+            ,String model, String run, int nrStim ,int logChange){
         this.myIP = myIP;
         this.action = action;
         this.emoIndex = emoIndex;
@@ -137,6 +137,7 @@ public class OSCSend implements Runnable {
     }
     private void init(){
         ArrayList<Object> sendBang = new ArrayList<>();
+
         sendBang.add(prefix);
         sendBang.add(userID);
         sendBang.add(userName);
@@ -148,10 +149,11 @@ public class OSCSend implements Runnable {
 
 
         try{
+            Log.d("OSC2", " to send."+message);
             // Send messages
             oscPortOut.send(message);
-            Log.d("OSC2", " to send."+message);
 
+            Log.d("OSC2", " to send."+message);
 
         } catch (Exception e){
             Log.d("OSC2", "Failed to send.");
@@ -164,7 +166,7 @@ public class OSCSend implements Runnable {
         if (oscPortOut != null){
             // Dont know why swich case doesnt work.
             if (action == "play"){
-            //    Toast.makeText(getApplicationContext(), "play", Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(getApplicationContext(), "play", Toast.LENGTH_SHORT).show();
 
                 play();
             }

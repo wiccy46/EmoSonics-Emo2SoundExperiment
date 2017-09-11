@@ -53,7 +53,7 @@ public class Test extends Activity {
         emoChoice.check(radio_button_Id+1);
         degreeChoice.check(R.id.zero);
         mSeekbar.setProgress(400);
-        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,-1.0));
+        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
 
         count += 1;
@@ -61,7 +61,7 @@ public class Test extends Activity {
             action = "save";
             Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_SHORT).show();
 
-            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,-1.0));
+            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
             play2.start();
             count = 0; // Reset count
             Intent i = new Intent(Test.this, MainActivity.class);
@@ -79,7 +79,7 @@ public class Test extends Activity {
         action = "emo";
         count = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
         int emoIndex = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
-        Thread play = new Thread(new OSCSend(myIP, action, emoIndex, 0, count, "x", "x", "x", "x", "x", 1,-1.0));
+        Thread play = new Thread(new OSCSend(myIP, action, emoIndex, 0, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
     }
 
@@ -87,12 +87,12 @@ public class Test extends Activity {
     public void onDegreeChoice(View view){
         action = "degree";
         int degreeIndex = degreeChoice.indexOfChild(findViewById(degreeChoice.getCheckedRadioButtonId()));
-        Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,-1.0));
+        Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
     }
 
     // Choose degree
-    public void onLogChange(double progress){
+    public void onLogChange(int progress){
         action = "logChange";
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
@@ -112,14 +112,16 @@ public class Test extends Activity {
         {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
             {
-                length_edit.setText(Double.toString(((float)progress/100.0) - 5));
+                // length_edit.setText(Double.toString(((float)progress/100.0) - 5));
+                length_edit.setText(Integer.toString(progress));
 
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {}
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                onLogChange(Double.parseDouble(length_edit.getText().toString()));
+                //onLogChange(Double.parseDouble(length_edit.getText().toString()));
+                onLogChange(Integer.parseInt(length_edit.getText().toString()));
             }
         });
         emoChoice = (RadioGroup) findViewById(R.id.emoRadioGroup);
