@@ -84,8 +84,8 @@ public class Test extends Activity {
     }
 
     // Choose degree
-    public void onDegreeChoice(View view){
-        action = "degree";
+    public void onVariationChoice(View view){
+        action = "variation selection";
         int degreeIndex = degreeChoice.indexOfChild(findViewById(degreeChoice.getCheckedRadioButtonId()));
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,1));
         play.start();

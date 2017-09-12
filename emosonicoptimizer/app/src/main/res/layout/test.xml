@@ -3,9 +3,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:weightSum="1"
     android:id="@+id/layoutHolder"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/emotionTitle"
             android:text="@string/emotion"
-            android:layout_weight="0.1"
+            android:layout_weight="1"
             android:textSize="@dimen/abc_action_bar_progress_bar_size"
             android:background="@color/accent_material_dark" />
 
@@ -30,7 +30,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.9">
+            android:layout_weight="1">
 
             <RadioGroup
                 android:id="@+id/emoRadioGroup"
@@ -44,22 +44,24 @@
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
                     android:layout_gravity="center_vertical"
-                    android:checked = "true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:background="@drawable/buttonbackground"
                     android:button="@android:color/transparent"
+                    android:checked="true"
                     android:gravity="center"
-                    android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/happy"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
                 <RadioButton
                     android:id="@+id/surprisedRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
                     android:button="@android:color/transparent"
@@ -67,13 +69,14 @@
                     android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/surprised"
-
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
                 <RadioButton
                     android:id="@+id/angryRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
@@ -82,12 +85,14 @@
                     android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/angry"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
                 <RadioButton
                     android:id="@+id/afraidRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
@@ -97,26 +102,15 @@
                     android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/afraid"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
-                <RadioButton
-                    android:id="@+id/neutralRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:gravity="center"
-                    android:onClick="onEmoChoice"
-                    android:padding="5dp"
-                    android:text="@string/neutral"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <RadioButton
                     android:id="@+id/disgustedRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
@@ -125,12 +119,14 @@
                     android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/disgusted"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
                 <RadioButton
                     android:id="@+id/sadRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
@@ -139,26 +135,14 @@
                     android:onClick="onEmoChoice"
                     android:padding="5dp"
                     android:text="@string/sad"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <RadioButton
-                    android:id="@+id/tiredRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:gravity="center"
-                    android:onClick="onEmoChoice"
-                    android:padding="5dp"
-                    android:text="@string/tired"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
                 <RadioButton
                     android:id="@+id/calmRB"
                     android:layout_width="@dimen/radio_button"
                     android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="5dp"
                     android:background="@drawable/buttonbackground"
@@ -168,9 +152,24 @@
                     android:padding="5dp"
                     android:text="@string/calm"
                     android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
+                <RadioButton
+                    android:id="@+id/neutralRB"
+                    android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/buttonbackground"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:onClick="onEmoChoice"
+                    android:padding="5dp"
+                    android:text="@string/neutral"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:clickable = "false"/>
 
-                    />
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
@@ -197,13 +196,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.2">
+            android:layout_weight="4">
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_weight="0.6"
+                android:layout_weight="0.5"
                 android:background="@color/abc_search_url_text_normal"
                 android:alpha="0.9"
                 android:layout_gravity="center"
@@ -238,7 +237,7 @@
                     android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="240dp"
-                    android:onClick="onDegreeChoice"
+                    android:onClick="onVariationChoice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
                 <RadioButton
@@ -253,7 +252,7 @@
                     android:checked="false"
                     android:padding="10dp"
                     android:layout_margin="10dp"
-                    android:onClick="onDegreeChoice"
+                    android:onClick="onVariationChoice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
 
                 <RadioButton
@@ -267,7 +266,7 @@
                     android:layout_gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_margin="10dp"
-                    android:onClick="onDegreeChoice"
+                    android:onClick="onVariationChoice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <RadioButton
                     android:layout_width="@dimen/radio_button_degree"
@@ -280,7 +279,7 @@
                     android:layout_gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_margin="10dp"
-                    android:onClick="onDegreeChoice"
+                    android:onClick="onVariationChoice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
                 <RadioButton
                     android:layout_width="@dimen/radio_button_degree"
@@ -293,11 +292,8 @@
                     android:layout_gravity="center_vertical"
                     android:padding="10dp"
                     android:layout_margin="10dp"
-                    android:onClick="onDegreeChoice"
+                    android:onClick="onVariationChoice"
                     android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-
-
             </RadioGroup>
 
             <Button
@@ -308,7 +304,6 @@
                 android:layout_weight="1"
                 android:allowUndo="false"
                 android:onClick="onProceedClick"
-                android:singleLine="false"
                 android:text="@string/onproceed"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
