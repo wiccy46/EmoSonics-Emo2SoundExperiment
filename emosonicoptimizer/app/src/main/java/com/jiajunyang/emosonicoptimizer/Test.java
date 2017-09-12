@@ -3,6 +3,7 @@ package com.jiajunyang.emosonicoptimizer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,8 +23,10 @@ public class Test extends Activity {
     private String myIP = MainActivity.retriveIP();
     private int nrStim = MainActivity.retriveNrStim();
     private String action;
+
     private RadioGroup emoChoice;
-    private RadioGroup degreeChoice;
+    private RadioGroup variationChoice;
+
     // This count is the num of stimulation, need to be replaced by user input.
     private int count = 0;
 
@@ -37,7 +40,7 @@ public class Test extends Activity {
         // Log Sigma step is according to the Seekbar progress. And the min and max value of progress bar is from 0 to 500 and so
         // we multiply it with 100 to adjust according to the value of sigma
         int log_sigma_step = 20;
-        degreeChoice.check(R.id.zero);
+        variationChoice.check(R.id.zero);
 
         mSeekbar.setProgress(mSeekbar.getProgress()-(log_sigma_step));
 
@@ -51,26 +54,25 @@ public class Test extends Activity {
         int emoIndex = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
         int radio_button_Id = emoChoice.getChildAt(emoIndex).getId();
         emoChoice.check(radio_button_Id+1);
-        degreeChoice.check(R.id.zero);
-        mSeekbar.setProgress(400);
+        variationChoice.check(R.id.zero);
+        mSeekbar.setProgress(400); // reset sigma bar
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
 
         count += 1;
         if (count == emoChoice.getChildCount()){
             action = "save";
-            Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_SHORT).show();
-
             Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
             play2.start();
             count = 0; // Reset count
             Intent i = new Intent(Test.this, MainActivity.class);
             startActivity(i); // Change page.
+            Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_LONG).show();
         }
         else
         {
+            // Need a text to tell what is the next emotion. 
             Toast.makeText(getApplicationContext(), R.string.gothroughemo, Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -86,7 +88,7 @@ public class Test extends Activity {
     // Choose degree
     public void onVariationChoice(View view){
         action = "variation selection";
-        int degreeIndex = degreeChoice.indexOfChild(findViewById(degreeChoice.getCheckedRadioButtonId()));
+        int degreeIndex = variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId()));
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
     }
@@ -97,16 +99,15 @@ public class Test extends Activity {
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
     }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test); // Include the correspondent xml filename.
         final TextView length_edit =(TextView)findViewById(R.id.textSigma);
 
-
-
         mSeekbar = (SeekBar) findViewById(R.id.logSeek);
-
         mSeekbar.setProgress(400);
         mSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
@@ -114,7 +115,6 @@ public class Test extends Activity {
             {
                 // length_edit.setText(Double.toString(((float)progress/100.0) - 5));
                 length_edit.setText(Integer.toString(progress));
-
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {}
@@ -124,7 +124,7 @@ public class Test extends Activity {
                 onLogChange(Integer.parseInt(length_edit.getText().toString()));
             }
         });
-        emoChoice = (RadioGroup) findViewById(R.id.emoRadioGroup);
-        degreeChoice = (RadioGroup) findViewById(R.id.degreeRadioGroup);
+        emoChoice = (RadioGroup) findViewById(R.id.tryRa);
+        variationChoice = (RadioGroup) findViewById(R.id.variationRadioGroup);
     }
 }

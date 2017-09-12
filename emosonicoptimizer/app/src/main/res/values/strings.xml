@@ -17,7 +17,7 @@
     <string name="logSigma">Log(sigma):  </string>
     <string name="onproceed">Next Variations </string>
     <string name="onaccept">Next Emotion </string>
-    <string name="gothroughemo">Click on accept till the last emotion to save the data </string>
+    <string name="gothroughemo">Next Emotion </string>
 
 
 
@@ -44,7 +44,7 @@
     <string name="restart">Restart</string>
     <string name="return2home">Return to Home</string>
     <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>
-    <string name="finishTest">Well done! Save the file.</string>
+    <string name="finishTest"> Well done! Save the file.</string>
 
     <!--
       This part is for the main page information enter.
