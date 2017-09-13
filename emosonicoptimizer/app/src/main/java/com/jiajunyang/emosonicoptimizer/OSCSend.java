@@ -144,7 +144,7 @@ public class OSCSend implements Runnable {
         sendBang.add(model);
         sendBang.add(run);
         sendBang.add(nrStim);
-        sendBang.add(logChange);
+//        sendBang.add(logChange);
         OSCMessage message = new OSCMessage("/init", sendBang);
 
 

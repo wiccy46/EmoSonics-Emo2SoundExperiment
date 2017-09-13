@@ -71,7 +71,7 @@ public class Test extends Activity {
         }
         else
         {
-            // Need a text to tell what is the next emotion. 
+            // Need a text to tell what is the next emotion.
             Toast.makeText(getApplicationContext(), R.string.gothroughemo, Toast.LENGTH_SHORT).show();
         }
     }
