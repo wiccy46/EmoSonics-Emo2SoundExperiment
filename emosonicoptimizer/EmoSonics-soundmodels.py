@@ -12,7 +12,7 @@ class SC:
     """SC is a class to start SuperCollider language as subprocess 
     and control it via a pipe. So far all output goes to the stdout
     (c) 2016 thermann@techfak.uni-bielefeld.de"""
-    def __init__(self, sclangpath="/Applications/SuperCollider/SuperCollider.app/Contents/MacOS/sclang"):
+    def __init__(self, sclangpath="/Applications/SuperCollider.app/Contents/MacOS/sclang"):
         self.scp = subprocess.Popen([sclangpath], shell=False, stdin=subprocess.PIPE)        
     def cmd(self, cmdstr):
         self.scp.stdin.write(cmdstr.replace('\n','').replace('\t','') +'\n');    

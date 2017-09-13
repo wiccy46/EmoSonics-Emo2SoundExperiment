@@ -56,7 +56,7 @@ public class OSCSend implements Runnable {
     // This function is for the play button
     private void play(){
         ArrayList<Object> sendBang = new ArrayList<>();
-        sendBang.add("bang");
+        sendBang.add(logChange);
         OSCMessage message = new OSCMessage("/play", sendBang);
         Log.d("OSCRun", "Play Sound.");
         try{
@@ -74,9 +74,10 @@ public class OSCSend implements Runnable {
 
     private void next(){
         ArrayList<Object> sendBang = new ArrayList<>();
+
         sendBang.add(count);
         OSCMessage message = new OSCMessage("/next", sendBang);
-        Log.d("OSCRun", "Next Sound.");
+        Log.d("OSCRun", "Next Sound."+count);
         try{
             // Send messages
             oscPortOut.send(message);
@@ -87,7 +88,7 @@ public class OSCSend implements Runnable {
 
     private void save(){
         ArrayList<Object> sendBang = new ArrayList<>();
-        sendBang.add("bang");
+        sendBang.add(count);
         OSCMessage message = new OSCMessage("/save", sendBang);
         Log.d("OSCRun", "Finish test and save file.");
         try{
@@ -101,7 +102,7 @@ public class OSCSend implements Runnable {
         ArrayList<Object> sendBang = new ArrayList<>();
         sendBang.add(emoIndex);
         OSCMessage message = new OSCMessage("/emo", sendBang);
-        Log.d("OSCRun", "Emotion Index: " + emoIndex);
+        Log.d("OSCRun", "Emotion Index: " + count);
         try{
             // Send messages
             oscPortOut.send(message);
@@ -122,7 +123,18 @@ public class OSCSend implements Runnable {
             Log.d("OSC2", "Failed to send.");
         }
     }
-
+    private void variationselection()
+    {
+        ArrayList<Object> sendBang = new ArrayList<>();
+        sendBang.add(degreeIndex);
+        OSCMessage message = new OSCMessage("/variationselection", sendBang);
+        try{
+            // Send messages
+            oscPortOut.send(message);
+        } catch (Exception e){
+            Log.d("OSC2", "Failed to send.");
+        }
+    }
     private void logValue(){
         ArrayList<Object> sendBang = new ArrayList<>();
         sendBang.add(logChange);
@@ -139,12 +151,12 @@ public class OSCSend implements Runnable {
         ArrayList<Object> sendBang = new ArrayList<>();
 
         sendBang.add(prefix);
-        sendBang.add(userID);
-        sendBang.add(userName);
+        sendBang.add(userID+","+userName);
+        //sendBang.add(userName);
         sendBang.add(model);
         sendBang.add(run);
         sendBang.add(nrStim);
-//        sendBang.add(logChange);
+        sendBang.add(logChange);
         OSCMessage message = new OSCMessage("/init", sendBang);
 
 
@@ -187,6 +199,10 @@ public class OSCSend implements Runnable {
             }
             else if (action == "init"){
                 init();
+            }
+            else if (action == "variationselection")
+            {
+                variationselection();
             }
 
             else{

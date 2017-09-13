@@ -43,6 +43,9 @@ public class Test extends Activity {
         variationChoice.check(R.id.zero);
 
         mSeekbar.setProgress(mSeekbar.getProgress()-(log_sigma_step));
+        int progress = mSeekbar.getProgress();
+        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
+        play.start();
 
         // Next step would be to send the parameters to Python code for further computation.
     }
@@ -55,17 +58,20 @@ public class Test extends Activity {
         int radio_button_Id = emoChoice.getChildAt(emoIndex).getId();
         emoChoice.check(radio_button_Id+1);
         variationChoice.check(R.id.zero);
+        Log.d("OSCRun", "Next Sound."+emoIndex);
+
         mSeekbar.setProgress(400); // reset sigma bar
-        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
+        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex+1, "x", "x", "x", "x", "x", 1,1));
         play.start();
 
-        count += 1;
-        if (count == emoChoice.getChildCount()){
+
+        if (emoIndex+1 == emoChoice.getChildCount()){
             action = "save";
-            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,1));
+            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex, "x", "x", "x", "x", "x", 1,1));
             play2.start();
             count = 0; // Reset count
-            Intent i = new Intent(Test.this, MainActivity.class);
+
+            Intent i = new Intent(Test.this, Test.class);
             startActivity(i); // Change page.
             Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_LONG).show();
         }
@@ -87,7 +93,9 @@ public class Test extends Activity {
 
     // Choose degree
     public void onVariationChoice(View view){
-        action = "variation selection";
+        action = "variationselection";
+
+        Log.d("OSC2", " to send."+variationChoice.getCheckedRadioButtonId());
         int degreeIndex = variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId()));
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
@@ -113,15 +121,15 @@ public class Test extends Activity {
         {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
             {
-                // length_edit.setText(Double.toString(((float)progress/100.0) - 5));
-                length_edit.setText(Integer.toString(progress));
+                 length_edit.setText(Double.toString(((float)progress/100.0) - 5));
+                //length_edit.setText(Double.toString((progress/100) - 5));
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {}
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 //onLogChange(Double.parseDouble(length_edit.getText().toString()));
-                onLogChange(Integer.parseInt(length_edit.getText().toString()));
+                onLogChange(Integer.parseInt(Integer.toString(seekBar.getProgress())));
             }
         });
         emoChoice = (RadioGroup) findViewById(R.id.tryRa);

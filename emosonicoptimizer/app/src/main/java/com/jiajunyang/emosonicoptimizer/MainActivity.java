@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity{
         String action = "init";
         if (validIP){
             Toast.makeText(getApplicationContext(), "New IP: "+ ip, Toast.LENGTH_LONG).show();
-            Thread play = new Thread(new OSCSend(ip, action, 0, 0, 0, myPrefix, myUserid, myUsername, modelIdx, myRun, nrStim,-1));
+            Thread play = new Thread(new OSCSend(ip, action, 0, 0, 0, myPrefix, myUserid, myUsername, modelIdx, myRun, nrStim,400));
             play.start();
 
 
