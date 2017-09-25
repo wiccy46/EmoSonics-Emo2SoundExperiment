@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity{
     boolean validIP;
     public static String ip  = "192.168.0.1";
     public static int nrStim = 4 ;
+    public static int run = 1;
     private RadioGroup modelChoice;
     private String modelIdx = "abstract"; // By default abstract
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
     {
         return ip;
     }
-
+    public static int retrieveRun(){ return run;}
     public static int retriveNrStim()
     {
         return nrStim;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity{
         String myUsername = getVariable(R.id.usernameText);
         String myRun = getVariable(R.id.runText);
         nrStim = Integer.parseInt(getVariable(R.id.nrstimText));
+        run = Integer.parseInt(getVariable(R.id.runText));
         String action = "init";
         if (validIP){
             Toast.makeText(getApplicationContext(), "New IP: "+ ip, Toast.LENGTH_LONG).show();

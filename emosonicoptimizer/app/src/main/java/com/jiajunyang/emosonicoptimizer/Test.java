@@ -22,6 +22,7 @@ import android.widget.Toast;
 public class Test extends Activity {
     private String myIP = MainActivity.retriveIP();
     private int nrStim = MainActivity.retriveNrStim();
+    private int run = MainActivity.retrieveRun();
     private String action;
 
     private RadioGroup emoChoice;
