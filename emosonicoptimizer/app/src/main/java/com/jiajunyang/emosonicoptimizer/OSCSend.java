@@ -57,6 +57,7 @@ public class OSCSend implements Runnable {
     private void play(){
         ArrayList<Object> sendBang = new ArrayList<>();
         sendBang.add(logChange);
+        sendBang.add(degreeIndex);
         OSCMessage message = new OSCMessage("/play", sendBang);
         Log.d("OSCRun", "Play Sound.");
         try{

@@ -41,11 +41,13 @@ public class Test extends Activity {
         // Log Sigma step is according to the Seekbar progress. And the min and max value of progress bar is from 0 to 500 and so
         // we multiply it with 100 to adjust according to the value of sigma
         int log_sigma_step = 20;
-        variationChoice.check(R.id.zero);
+        int degreeIndex = variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId()));
 
+        variationChoice.check(R.id.zero);
+        Log.d("OSC2", " to send."+variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId())));
         mSeekbar.setProgress(mSeekbar.getProgress()-(log_sigma_step));
         int progress = mSeekbar.getProgress();
-        Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
+        Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
 
         // Next step would be to send the parameters to Python code for further computation.
