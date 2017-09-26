@@ -26,152 +26,121 @@
             android:background="@color/accent_material_dark"
 />
 
-        <LinearLayout
+        <FrameLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:baselineAligned="false">
 
-            <RadioGroup
-                android:id="@+id/tryRa"
+
+            <TextView
+                android:id="@+id/textView0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.9"
-                android:orientation="horizontal">
+                android:layout_gravity="center_horizontal"
+                android:button="@android:color/transparent"
+                android:clickable="false"
+                android:gravity="center"
+                android:textSize="60dp"
+                android:visibility="visible"
+                android:text="@string/happy"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <RadioButton
-                    android:id="@+id/happyRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:checked="true"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/happy"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:button="@android:color/transparent"
+                android:clickable="false"
+                android:gravity="center"
+                android:onClick="onEmoChoice"
+                android:textSize="60dp"
+                android:text="@string/surprised"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible" />
 
-                <RadioButton
-                    android:id="@+id/surprisedRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:onClick="onEmoChoice"
-                    android:padding="5dp"
-                    android:text="@string/surprised"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center"
+                android:onClick="onEmoChoice"
+                android:textSize="60dp"
+                android:text="@string/angry"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible" />
 
-                <RadioButton
-                    android:id="@+id/angryRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:button="@android:color/transparent"
                     android:clickable="false"
                     android:gravity="center"
                     android:onClick="onEmoChoice"
-                    android:padding="5dp"
-                    android:text="@string/angry"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <RadioButton
-                    android:id="@+id/afraidRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:clickable="false"
-                    android:gravity="center"
-                    android:nestedScrollingEnabled="false"
-                    android:onClick="onEmoChoice"
-                    android:padding="5dp"
+                    android:textSize="60dp"
+                    android:visibility="invisible"
                     android:text="@string/afraid"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-                <RadioButton
-                    android:id="@+id/disgustedRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:button="@android:color/transparent"
                     android:clickable="false"
                     android:gravity="center"
                     android:onClick="onEmoChoice"
-                    android:padding="5dp"
+                    android:textSize="60dp"
+                    android:visibility="invisible"
                     android:text="@string/disgusted"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <RadioButton
-                    android:id="@+id/sadRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:button="@android:color/transparent"
                     android:clickable="false"
                     android:gravity="center"
                     android:onClick="onEmoChoice"
-                    android:padding="5dp"
+                    android:textSize="60dp"
+                    android:visibility="invisible"
                     android:text="@string/sad"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <RadioButton
-                    android:id="@+id/calmRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:button="@android:color/transparent"
                     android:clickable="false"
                     android:gravity="center"
                     android:onClick="onEmoChoice"
-                    android:padding="5dp"
+                    android:textSize="60dp"
+                    android:visibility="invisible"
                     android:text="@string/calm"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                <RadioButton
-                    android:id="@+id/neutralRB"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/buttonbackground"
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:button="@android:color/transparent"
                     android:clickable="false"
                     android:gravity="center"
                     android:onClick="onEmoChoice"
-                    android:padding="5dp"
+                    android:textSize="60dp"
+                    android:visibility="invisible"
                     android:text="@string/neutral"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            </RadioGroup>
-        </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout

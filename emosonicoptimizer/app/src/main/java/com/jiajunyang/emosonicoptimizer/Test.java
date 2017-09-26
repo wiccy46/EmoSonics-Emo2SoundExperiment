@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -24,8 +25,7 @@ public class Test extends Activity {
     private int nrStim = MainActivity.retriveNrStim();
     private int run = MainActivity.retrieveRun();
     private String action;
-
-    private RadioGroup emoChoice;
+    private int run_instance = MainActivity.getRunInstance();
     private RadioGroup variationChoice;
 
     // This count is the num of stimulation, need to be replaced by user input.
@@ -56,11 +56,39 @@ public class Test extends Activity {
     // Next
     public void onAcceptClick(View view) {
         action = "next";
+        int i = 0;
+        for(i = 0; i <8; i++)
+            {
+                String t=  "textView"+i;
+                int id = getResources().getIdentifier(t, "id", getApplicationContext().getPackageName());
+
+                TextView tv = (TextView)findViewById(id);
+                Log.d("id for text",""+id +" "+ t);
+                if(tv.getVisibility() == View.VISIBLE)
+                {
+                    break;
+                }
+            }
+
         // Find the radio button and select the next one
-        int emoIndex = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
-        int radio_button_Id = emoChoice.getChildAt(emoIndex).getId();
-        emoChoice.check(radio_button_Id+1);
-        variationChoice.check(R.id.zero);
+        int emoIndex = i;
+        String t=  "textView"+i;
+        int id = getResources().getIdentifier(t, "id", getApplicationContext().getPackageName());
+        TextView tv = (TextView)findViewById(id);
+        tv.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move));
+        tv.setVisibility(View.INVISIBLE);
+
+        i = i+1;
+        if(i< 8)
+        {
+        String nextEmotion = "textView"+i;
+        int nextid = getResources().getIdentifier(nextEmotion, "id", getApplicationContext().getPackageName());
+        TextView nexttv = (TextView)findViewById(nextid);
+        nexttv.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.popup));
+        nexttv.setVisibility(View.VISIBLE);
+        }
+            variationChoice.check(R.id.zero);
+
         Log.d("OSCRun", "Next Sound."+emoIndex);
 
         mSeekbar.setProgress(400); // reset sigma bar
@@ -68,15 +96,30 @@ public class Test extends Activity {
         play.start();
 
 
-        if (emoIndex+1 == emoChoice.getChildCount()){
+        if (emoIndex+1 == 8){
             action = "save";
             Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex, "x", "x", "x", "x", "x", 1,1));
             play2.start();
             count = 0; // Reset count
+            if(run > run_instance)
+            {
+                //Log.d("run","run instance "+ run_instance);
+                Intent in = new Intent(Test.this, Test.class);
+                startActivity(in); // Change page.
+                Toast.makeText(getApplicationContext(), R.string.runTest, Toast.LENGTH_LONG).show();
+                MainActivity.setRunInstance();
+                //run_instance = MainActivity.getRunInstance();
+            }
+            else
+            {
+                //Log.d("run","run instance "+ run_instance);
+                MainActivity.run_instance=1;
+                Intent in = new Intent(Test.this,MainActivity.class);
 
-            Intent i = new Intent(Test.this, Test.class);
-            startActivity(i); // Change page.
-            Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_LONG).show();
+                startActivity(in);
+                Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_LONG).show();
+
+            }
         }
         else
         {
@@ -88,8 +131,20 @@ public class Test extends Activity {
     // Choose which emo
     public void onEmoChoice(View view){
         action = "emo";
-        count = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
-        int emoIndex = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
+        //count = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
+        int i = 0;
+        for(i = 0; i <8; i++)
+        {
+            String t=  "textView"+i;
+            int id = getResources().getIdentifier(t, "id", getApplicationContext().getPackageName());
+
+            TextView tv = (TextView)findViewById(id);
+            if(tv.getVisibility() == View.VISIBLE)
+            {
+                break;
+            }
+        }
+        int emoIndex = i;
         Thread play = new Thread(new OSCSend(myIP, action, emoIndex, 0, count, "x", "x", "x", "x", "x", 1,1));
         play.start();
     }
@@ -135,7 +190,7 @@ public class Test extends Activity {
                 onLogChange(Integer.parseInt(Integer.toString(seekBar.getProgress())));
             }
         });
-        emoChoice = (RadioGroup) findViewById(R.id.tryRa);
+        //emoChoice = (RadioGroup) findViewById(R.id.tryRa);
         variationChoice = (RadioGroup) findViewById(R.id.variationRadioGroup);
     }
 }

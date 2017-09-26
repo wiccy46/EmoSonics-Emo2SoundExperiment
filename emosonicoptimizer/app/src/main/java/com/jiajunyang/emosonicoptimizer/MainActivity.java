@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
     public static int run = 1;
     private RadioGroup modelChoice;
     private String modelIdx = "abstract"; // By default abstract
-
+    public static int run_instance = 1;
     // This is to let Test.java retrive IP address.
     public static String retriveIP()
     {
@@ -86,7 +86,15 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), R.string.invalidIP, Toast.LENGTH_LONG).show();
         }
     }
+    public static int getRunInstance()
+    {
+        return run_instance;
 
+    }
+    public static void setRunInstance()
+    {
+        run_instance += 1;
+    }
     private String getIP(){
         String myIP;
         EditText yourIP = (EditText) findViewById(R.id.ipText);

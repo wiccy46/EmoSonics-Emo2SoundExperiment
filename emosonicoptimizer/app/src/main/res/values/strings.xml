@@ -45,6 +45,7 @@
     <string name="return2home">Return to Home</string>
     <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>
     <string name="finishTest"> Well done! Save the file.</string>
+    <string name="runTest"> Next Run </string>
 
     <!--
       This part is for the main page information enter.
