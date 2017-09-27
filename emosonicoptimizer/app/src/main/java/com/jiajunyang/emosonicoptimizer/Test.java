@@ -32,30 +32,34 @@ public class Test extends Activity {
     private int count = 0;
 
     SeekBar mSeekbar ;
+    // Disable back button, Users are not allowed to jump to older instance once the experiment is finished
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), R.string.backButton, Toast.LENGTH_LONG).show();
 
-
-    //    String myIP, String action, int emoIndex, int degreeIndex, int count, String prefix, String userID, String userName
-//    ,int model, String run, int nrStim
+    }
+    // To save the current variation as the base variation for generating 4 new variations
     public void onProceedClick(View view) {
         action = "play";
         // Log Sigma step is according to the Seekbar progress. And the min and max value of progress bar is from 0 to 500 and so
         // we multiply it with 100 to adjust according to the value of sigma
         int log_sigma_step = 20;
+        // degree index represents the index of the variation selected
         int degreeIndex = variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId()));
 
         variationChoice.check(R.id.zero);
-        Log.d("OSC2", " to send."+variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId())));
+
         mSeekbar.setProgress(mSeekbar.getProgress()-(log_sigma_step));
         int progress = mSeekbar.getProgress();
+        // Send the parameters to python code
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
-
-        // Next step would be to send the parameters to Python code for further computation.
     }
 
-    // Next
+    // Go to next emotion
     public void onAcceptClick(View view) {
         action = "next";
+        // For loop to find out the selected emotion
         int i = 0;
         for(i = 0; i <8; i++)
             {
@@ -70,15 +74,16 @@ public class Test extends Activity {
                 }
             }
 
-        // Find the radio button and select the next one
         int emoIndex = i;
         String t=  "textView"+i;
         int id = getResources().getIdentifier(t, "id", getApplicationContext().getPackageName());
         TextView tv = (TextView)findViewById(id);
         tv.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move));
+        // Make the selected emotion invisible and next emotion visible
         tv.setVisibility(View.INVISIBLE);
 
         i = i+1;
+        // Check if its the last emotion or not, if its not the last emotion make the next emotion visible
         if(i< 8)
         {
         String nextEmotion = "textView"+i;
@@ -90,12 +95,12 @@ public class Test extends Activity {
             variationChoice.check(R.id.zero);
 
         Log.d("OSCRun", "Next Sound."+emoIndex);
-
+        // Send the parameters to python code
         mSeekbar.setProgress(400); // reset sigma bar
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex+1, "x", "x", "x", "x", "x", 1,1));
         play.start();
 
-
+        // Check if the emotion is the last one then check for the number of run and accordingly jump to the next run
         if (emoIndex+1 == 8){
             action = "save";
             Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex, "x", "x", "x", "x", "x", 1,1));
@@ -110,17 +115,21 @@ public class Test extends Activity {
                 MainActivity.setRunInstance();
                 //run_instance = MainActivity.getRunInstance();
             }
+            // If the run count is over, go to the main page
             else
             {
                 //Log.d("run","run instance "+ run_instance);
                 MainActivity.run_instance=1;
-                Intent in = new Intent(Test.this,MainActivity.class);
 
-                startActivity(in);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("EXIT", false);
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), R.string.finishTest, Toast.LENGTH_LONG).show();
 
             }
         }
+
         else
         {
             // Need a text to tell what is the next emotion.
@@ -128,7 +137,8 @@ public class Test extends Activity {
         }
     }
 
-    // Choose which emo
+    // Choose which emotion, this function was used to change the emotion manually but in the experiment we are
+    // not allowed to jump to other emotion
     public void onEmoChoice(View view){
         action = "emo";
         //count = emoChoice.indexOfChild(findViewById(emoChoice.getCheckedRadioButtonId()));
@@ -149,7 +159,7 @@ public class Test extends Activity {
         play.start();
     }
 
-    // Choose degree
+    // Send the selected variation to python code
     public void onVariationChoice(View view){
         action = "variationselection";
 
@@ -159,14 +169,20 @@ public class Test extends Activity {
         play.start();
     }
 
-    // Choose degree
+    // Send the changed log value to python code
     public void onLogChange(int progress){
         action = "logChange";
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
     }
 
-
+    public void onRestartClick(View view)
+    {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", false);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

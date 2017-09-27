@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity{
         }
         return myVar;
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("EXIT", true);
+        startActivity(intent);
+    }
 
     public void onModelChoice(View view){
         int temp;
@@ -116,6 +123,9 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
+            finish();
+        }
         final EditText editIp = (EditText) findViewById(R.id.ipText);
         final EditText editId = (EditText) findViewById(R.id.idText);
         final EditText editPrefix = (EditText) findViewById(R.id.prefixText);
