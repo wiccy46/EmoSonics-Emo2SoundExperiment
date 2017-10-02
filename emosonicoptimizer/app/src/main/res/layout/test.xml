@@ -317,7 +317,7 @@
             android:layout_weight="0.3"
             android:layout_gravity="center_vertical"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:onClick="onAcceptClick" />
+            android:onClick="onAcceptEmoClick" />
     </LinearLayout>
 
 

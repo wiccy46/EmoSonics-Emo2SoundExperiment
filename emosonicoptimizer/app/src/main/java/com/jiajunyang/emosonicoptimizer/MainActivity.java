@@ -21,13 +21,14 @@ import android.view.View.OnKeyListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 
+
 public class MainActivity extends AppCompatActivity{
     boolean validIP;
     public static String ip  = "192.168.0.1";
     public static int nrStim = 4 ;
     public static int run = 1;
     private RadioGroup modelChoice;
-    private String modelIdx = "abstract"; // By default abstract
+    public static String modelIdx = "abstract"; // By default abstract
     public static int run_instance = 1;
     // This is to let Test.java retrive IP address.
     public static String retriveIP()
@@ -92,6 +93,21 @@ public class MainActivity extends AppCompatActivity{
         else {
             Toast.makeText(getApplicationContext(), R.string.invalidIP, Toast.LENGTH_LONG).show();
         }
+    }
+    public static void setEmotionModel()
+    {
+        if (modelIdx == "abstract")
+        {
+            modelIdx  = "vocal";
+        }
+        else
+        {
+            modelIdx = "abstract";
+        }
+    }
+    public static String getEmotionModel()
+    {
+        return modelIdx;
     }
     public static int getRunInstance()
     {

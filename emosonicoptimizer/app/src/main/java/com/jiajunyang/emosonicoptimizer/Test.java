@@ -11,7 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 /**
  * Created by jiajunyang on 27/05/16.
  * This is the actual testin class, which sends actions according to the buttons.
@@ -55,9 +56,29 @@ public class Test extends Activity {
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
     }
+    public void onAcceptEmoClick(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("Do you want to go to other emotion ?");
+        //builder.setIcon(R.drawable.ic_launcher);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
 
+                onAcceptClick();
+                dialog.dismiss();
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
     // Go to next emotion
-    public void onAcceptClick(View view) {
+    public void onAcceptClick() {
         action = "next";
         // For loop to find out the selected emotion
         int i = 0;
@@ -102,12 +123,21 @@ public class Test extends Activity {
 
         // Check if the emotion is the last one then check for the number of run and accordingly jump to the next run
         if (emoIndex+1 == 8){
+            MainActivity.setEmotionModel();
+
+            String emoModel = MainActivity.getEmotionModel();
             action = "save";
-            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex, "x", "x", "x", "x", "x", 1,1));
+            Thread play2 = new Thread(new OSCSend(myIP, action, 0, 0, emoIndex, "x", "x", "x", "x", "x", 1,run_instance));
             play2.start();
+
+
             count = 0; // Reset count
             if(run > run_instance)
             {
+
+                action = "nextrun";
+                Thread play3 = new Thread(new OSCSend(myIP, action, 0, 0, 0, "x", "x", "x", emoModel, "x", 1,1));
+                play3.start();
                 //Log.d("run","run instance "+ run_instance);
                 Intent in = new Intent(Test.this, Test.class);
                 startActivity(in); // Change page.
@@ -174,9 +204,32 @@ public class Test extends Activity {
         Thread play = new Thread(new OSCSend(myIP, action, 0, 0, count, "x", "x", "x", "x", "x", 1,progress));
         play.start();
     }
-
     public void onRestartClick(View view)
     {
+    AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("All your progress will be lost, Do you want to restart? ");
+    //builder.setIcon(R.drawable.ic_launcher);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+
+            onRestartRunClick();
+            dialog.dismiss();
+
+        }
+    });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {
+            dialog.dismiss();
+        }
+    });
+
+    AlertDialog alert = builder.create();
+        alert.show();
+    }
+    public void onRestartRunClick()
+    {
+        MainActivity.run_instance=1;
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("EXIT", false);
@@ -186,6 +239,10 @@ public class Test extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test); // Include the correspondent xml filename.
+
+
+
+
         final TextView length_edit =(TextView)findViewById(R.id.textSigma);
 
         mSeekbar = (SeekBar) findViewById(R.id.logSeek);

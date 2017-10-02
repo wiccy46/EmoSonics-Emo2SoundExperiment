@@ -112,7 +112,19 @@ public class OSCSend implements Runnable {
         }
     }
 
-
+    private void nextrun()
+    {
+        ArrayList<Object> sendBang = new ArrayList<>();
+        sendBang.add(model);
+        sendBang.add(logChange);
+        OSCMessage message = new OSCMessage("/nextrun", sendBang);
+        try{
+            // Send messages
+            oscPortOut.send(message);
+        } catch (Exception e){
+            Log.d("OSC2", "Failed to send.");
+        }
+    }
     // choosing between different mutations.
     private void variationselection()
     {
@@ -142,7 +154,7 @@ public class OSCSend implements Runnable {
     // Triggered when begin button is pressed.
     private void init(){
         ArrayList<Object> sendBang = new ArrayList<>();
-
+        Log.d("model",model);
         sendBang.add(prefix);
         sendBang.add(userID+","+userName);
         //sendBang.add(userName);
@@ -194,6 +206,11 @@ public class OSCSend implements Runnable {
             {
                 variationselection();
             }
+            else if (action == "nextrun")
+            {
+                nextrun();
+            }
+
 
             else{
                 Log.d("OSC Action Error: ", "OSC Action Error."); // Need to change it to a Toast.
