@@ -112,18 +112,8 @@ public class OSCSend implements Runnable {
         }
     }
 
-    private void degree(){
-        ArrayList<Object> sendBang = new ArrayList<>();
-        sendBang.add(degreeIndex);
-        OSCMessage message = new OSCMessage("/degree", sendBang);
-        Log.d("OSCRun", "Degree Index: " + degreeIndex);
-        try{
-            // Send messages
-            oscPortOut.send(message);
-        } catch (Exception e){
-            Log.d("OSC2", "Failed to send.");
-        }
-    }
+
+    // choosing between different mutations.
     private void variationselection()
     {
         ArrayList<Object> sendBang = new ArrayList<>();
@@ -148,6 +138,8 @@ public class OSCSend implements Runnable {
             Log.d("OSC2", "Failed to send.");
         }
     }
+
+    // Triggered when begin button is pressed.
     private void init(){
         ArrayList<Object> sendBang = new ArrayList<>();
 
@@ -188,9 +180,6 @@ public class OSCSend implements Runnable {
             }
             else if (action == "emo"){
                 emo();
-            }
-            else if (action == "degree"){
-                degree();
             }
             else if (action == "save"){
                 save();

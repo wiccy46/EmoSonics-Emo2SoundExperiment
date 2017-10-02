@@ -144,91 +144,95 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/bottomSection"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomSection"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/degreeTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@color/accent_material_dark"
             android:text="@string/choosevariation"
-            android:id="@+id/degreeTitle"
-            android:textSize="@dimen/abc_action_bar_progress_bar_size"
-            android:background="@color/accent_material_dark" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/abc_action_bar_progress_bar_size" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="3">
+            android:layout_weight="3"
+            android:orientation="horizontal">
 
             <RadioGroup
+                android:id="@+id/variationRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="0.5"
-                android:background="@color/abc_search_url_text_normal"
-                android:alpha="0.9"
                 android:layout_gravity="center"
-                android:id="@+id/variationRadioGroup">
+                android:layout_weight="0.5"
+                android:alpha="0.9"
+                android:background="@color/abc_search_url_text_normal"
+                android:orientation="horizontal">
 
                 <RadioButton
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
                     android:id="@+id/zero"
+                    android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:background="@drawable/buttonbackground"
                     android:button="@android:color/transparent"
                     android:gravity="center"
-                    android:layout_gravity="center_vertical"
                     android:onClick="onVariationChoice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="@string/zero"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
                 <RadioButton
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_weight="1"
-                    android:text="@string/one"
                     android:id="@+id/one"
+                    android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:background="@drawable/buttonbackground"
                     android:button="@android:color/transparent"
-                    android:gravity="center"
-                    android:layout_gravity="center_vertical"
                     android:checked="false"
+                    android:gravity="center"
                     android:onClick="onVariationChoice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="@string/one"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
                 <RadioButton
-                    android:layout_height="@dimen/radio_button"
-                    android:layout_width="@dimen/radio_button"
-                    android:layout_weight="1"
-                    android:text="@string/two"
                     android:id="@+id/two"
-                    android:background="@drawable/buttonbackground"
-                    android:button="@android:color/transparent"
-                    android:gravity="center"
-                    android:layout_gravity="center_vertical"
-                    android:onClick="onVariationChoice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-                <RadioButton
-                    android:layout_height="@dimen/radio_button"
                     android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:text="@string/three"
-                    android:id="@+id/three"
                     android:background="@drawable/buttonbackground"
                     android:button="@android:color/transparent"
                     android:gravity="center"
-                    android:layout_gravity="center_vertical"
                     android:onClick="onVariationChoice"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="@string/two"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <RadioButton
+                    android:id="@+id/three"
+                    android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonbackground"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:onClick="onVariationChoice"
+                    android:text="@string/three"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
                 <RadioButton
                     android:id="@+id/four"
-                    android:layout_height="@dimen/radio_button"
                     android:layout_width="@dimen/radio_button"
+                    android:layout_height="@dimen/radio_button"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:background="@drawable/buttonbackground"

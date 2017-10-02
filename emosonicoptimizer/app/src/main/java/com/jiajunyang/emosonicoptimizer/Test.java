@@ -162,7 +162,6 @@ public class Test extends Activity {
     // Send the selected variation to python code
     public void onVariationChoice(View view){
         action = "variationselection";
-
         Log.d("OSC2", " to send."+variationChoice.getCheckedRadioButtonId());
         int degreeIndex = variationChoice.indexOfChild(findViewById(variationChoice.getCheckedRadioButtonId()));
         Thread play = new Thread(new OSCSend(myIP, action, 0, degreeIndex, count, "x", "x", "x", "x", "x", 1,1));
