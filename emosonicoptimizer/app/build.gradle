@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
     compile 'com.illposed.osc:javaosc-core:0.3'
+    compile 'cn.pedant.sweetalert:library:1.3'
 }

@@ -22,7 +22,7 @@
 
 
 
-
+    <string name="newIp">New IP</string>
     <string name="nextSound">Next</string>
     <string name="playSound">Play</string>
     <string name="emotion">Target Emotions:</string>
@@ -64,7 +64,11 @@
     <string name="vocal">Vocal: </string>
     <string name="ip">IP*: </string>
     <string name="prefixExample">rating-emo9</string>
-
+    <string name="dialogNextEmotion">Do you want to proceed to next emotion?</string>
+    <string name="yesConfirm">Yes</string>
+    <string name="areYouSure">Are you sure?</string>
+    <string name="allProgressConfirm">All progress will be lost!</string>
+    <string name="yesRestart">Yes Restart!</string>
     <!--
       This part is for the new test layout
       -->

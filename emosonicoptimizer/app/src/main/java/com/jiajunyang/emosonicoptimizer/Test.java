@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by jiajunyang on 27/05/16.
  * This is the actual testin class, which sends actions according to the buttons.
@@ -57,7 +60,19 @@ public class Test extends Activity {
         play.start();
     }
     public void onAcceptEmoClick(View view){
-        AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
+        SweetAlertDialog pDialog = new SweetAlertDialog(this);
+        pDialog.setTitleText(this.getString(R.string.app_name))
+                .setContentText(this.getString(R.string.dialogNextEmotion))
+                .setConfirmText(this.getString(R.string.yesConfirm))
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        onAcceptClick();
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                .show();
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
         builder.setTitle(R.string.app_name);
         builder.setMessage("Do you want to go to other emotion ?");
         //builder.setIcon(R.drawable.ic_launcher);
@@ -75,7 +90,7 @@ public class Test extends Activity {
             }
         });
         AlertDialog alert = builder.create();
-        alert.show();
+        alert.show();*/
     }
     // Go to next emotion
     public void onAcceptClick() {
@@ -206,7 +221,19 @@ public class Test extends Activity {
     }
     public void onRestartClick(View view)
     {
-    AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
+        SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE);
+                pDialog.setTitleText(this.getString(R.string.areYouSure))
+                .setContentText(this.getString(R.string.allProgressConfirm))
+                .setConfirmText(this.getString(R.string.yesRestart))
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        onRestartRunClick();
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                .show();
+    /*AlertDialog.Builder builder = new AlertDialog.Builder(Test.this);
         builder.setTitle(R.string.app_name);
         builder.setMessage("All your progress will be lost, Do you want to restart? ");
     //builder.setIcon(R.drawable.ic_launcher);
@@ -225,7 +252,7 @@ public class Test extends Activity {
     });
 
     AlertDialog alert = builder.create();
-        alert.show();
+        alert.show();*/
     }
     public void onRestartRunClick()
     {

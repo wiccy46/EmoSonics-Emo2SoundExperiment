@@ -83,7 +83,7 @@ public class OSCSend implements Runnable {
             // Send messages
             oscPortOut.send(message);
         } catch (Exception e){
-            Log.d("OSC2", "Failed to send.");
+            Log.d("OSC2", "Failed to send."+e.getMessage());
         }
     }
 

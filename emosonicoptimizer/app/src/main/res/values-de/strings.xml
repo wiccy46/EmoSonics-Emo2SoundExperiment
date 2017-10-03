@@ -27,6 +27,8 @@
     <string name="return2home">zurückkehren</string>
     <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>
     <string name="finishTest">Gut gemacht!! Datei gespeichert</string>
+    <string name="backButton"> Zurück-Taste deaktiviert </string>
+    <string name="runTest"> Weiter laufen</string>
 
     <!--
       This part is for the main page information enter.
@@ -34,8 +36,8 @@
       -->
 
 
-    <string name="welcome">EmoSonic</string>
-    <string name="startTest">Start</string>
+    <string name="welcome">Emo Sonic</string>
+    <string name="startTest">Anfang</string>
     <string name="enterIPHint">Beispiel 192.168.0.1</string>
     <string name="studyprefix">Studienpräfix: </string>
     <string name="userid">Benutzerid: </string>
@@ -47,12 +49,21 @@
     <string name="vocal">Vokal: </string>
     <string name="ip">IP*: </string>
     <string name="prefixExample">rating-emo9</string>
-
-
-
+    <string name="newIp">Neu IP</string>
+    <string name="logSigma">Log(sigma):  </string>
+    <string name="onproceed">Nächste Variationen </string>
+    <string name="onaccept">Weiter Emotion </string>
+    <string name="gothroughemo">Weiter Emotion </string>
+    <string name="selectTarget">Wählen Sie Ziel: </string>
+    <string name="choosevariation">Wähle die beste Variation: </string>
+    <string name="dialogNextEmotion">Wollen Sie zum nächsten Emotionen gehen</string>
+    <string name="yesConfirm">Ja</string>
+    <string name="areYouSure">bist du sicher?</string>
+    <string name="yesRestart">Ja Neustart!</string>
+    <string name="allProgressConfirm">Alle Fortschritte gehen verloren!</string>
     <!--
-  For toast
-  -->
+   For toast
+   -->
 
     <string name="nullInput">Null-Eingabe, versuchen Sie es erneut.</string>
     <string name="invalidIP">Ungültige IP, korrektes Format, e.g. 192.168.0.1, 255.255.255.255. Versuch es noch einmal</string>
