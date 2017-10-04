@@ -60,9 +60,10 @@ public class Test extends Activity {
         play.start();
     }
     public void onAcceptEmoClick(View view){
-        SweetAlertDialog pDialog = new SweetAlertDialog(this);
+        SweetAlertDialog pDialog = new SweetAlertDialog(this,SweetAlertDialog.CUSTOM_IMAGE_TYPE);
         pDialog.setTitleText(this.getString(R.string.app_name))
                 .setContentText(this.getString(R.string.dialogNextEmotion))
+                .setCustomImage(R.drawable.tick)
                 .setConfirmText(this.getString(R.string.yesConfirm))
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
