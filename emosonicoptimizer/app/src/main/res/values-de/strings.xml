@@ -22,7 +22,7 @@
     <string name="weak">Schwach</string>
     <string name="average">Durchschnittlich</string>
     <string name="strong">Stark</string>
-    <string name="myname">Mein Name</string>
+    <string name="myname">Name</string>
     <string name="restart">Neustart</string>
     <string name="return2home">zurückkehren</string>
     <string name="creatorEmail">jyang@techfak.uni-bielefeld.de</string>

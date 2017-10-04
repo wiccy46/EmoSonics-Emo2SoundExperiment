@@ -258,6 +258,7 @@ public class Test extends Activity {
     public void onRestartRunClick()
     {
         MainActivity.run_instance=1;
+        MainActivity.modelIdx = "abstract";
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("EXIT", false);
