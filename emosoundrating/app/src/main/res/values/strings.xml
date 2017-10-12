@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EmoSound Rating</string>
+    <string name="app_name">EmoSoundRating</string>
     <string name="action_settings">Settings</string>
 
 
@@ -33,7 +33,7 @@
       This part is for the main page information enter.
 
       -->
-    <string name="welcome">EmoSonic</string>
+    <string name="welcome">EmoSonics</string>
     <string name="startTest">Begin</string>
     <string name="enterIPHint">Example 192.168.0.1</string>
     <string name="studyprefix">Study Prefix: </string>
